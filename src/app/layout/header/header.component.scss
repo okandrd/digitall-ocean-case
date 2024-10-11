@@ -1,0 +1,25 @@
+.header {
+  height: 60px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    height: 36px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    a {
+      color: #ffffff;
+
+      &.active {
+        color: #ff5000;
+      }
+    }
+  }
+}
