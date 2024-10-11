@@ -6,13 +6,24 @@
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
       ariaCurrentWhenActive="page"
+      i18n
       >Home</a
     >
     <a
       routerLink="/crew/1"
       routerLinkActive="active"
       ariaCurrentWhenActive="page"
+      i18n
       >Example Crew</a
     >
+    <select #langSelect (change)="translate.use(langSelect.value)">
+      <option
+        *ngFor="let lang of translate.getLangs()"
+        [value]="lang"
+        [selected]="lang === translate.currentLang"
+      >
+        {{ lang }}
+      </option>
+    </select>
   </nav>
 </header>

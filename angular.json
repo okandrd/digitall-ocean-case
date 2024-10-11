@@ -4,6 +4,13 @@
   "newProjectRoot": "projects",
   "projects": {
     "digitall-ocean": {
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "fr": "src/locale/messages.fr.json",
+          "pt": "src/locale/messages.pt.json"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,12 +24,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": ["en"],
             "outputPath": "dist/digitall-ocean",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js", "@angular/localize/init"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -81,7 +87,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
