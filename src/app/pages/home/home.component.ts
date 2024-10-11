@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
-import { Crew } from '../../models/crew.model';
 import { TranslateModule } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { Crew } from '../../models/crew.model';
+import { CrewService } from '../../services/crew.service';
+import { RouterLink } from '@angular/router';
 
 const ELEMENT_DATA: Crew[] = [
   {
@@ -19,11 +25,26 @@ const ELEMENT_DATA: Crew[] = [
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatTableModule, TranslateModule],
+  imports: [
+    MatTableModule,
+    TranslateModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+    RouterLink,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  crews$!: Observable<Crew[]>;
+
+  constructor(private crewService: CrewService) {}
+
+  ngOnInit(): void {
+    this.crews$ = this.crewService.getCrews();
+  }
+
   displayedColumns: string[] = [
     'firstName',
     'lastName',
@@ -32,6 +53,8 @@ export class HomeComponent {
     'daysOnBoard',
     'dailyRate',
     'currency',
+    'totalIncome',
+    'certificates',
+    'actions',
   ];
-  dataSource = ELEMENT_DATA;
 }

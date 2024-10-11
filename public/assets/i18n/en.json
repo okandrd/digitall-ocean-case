@@ -5,5 +5,8 @@
   "Title": "Title",
   "Days_On_Board": "Days On Board",
   "Daily_Rate": "Daily Rate",
-  "Currency": "Currency"
+  "Currency": "Currency",
+  "Total_Income": "Total Income",
+  "Certificates": "Certificates",
+  "Actions": "Actions"
 }

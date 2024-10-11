@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="crews$" class="mat-elevation-z8">
   <ng-container matColumnDef="firstName">
     <th mat-header-cell *matHeaderCellDef i18n>
       {{ "First_Name" | translate }}
@@ -42,6 +42,40 @@
   <ng-container matColumnDef="currency">
     <th mat-header-cell *matHeaderCellDef i18n>{{ "Currency" | translate }}</th>
     <td mat-cell *matCellDef="let element">{{ element.currency }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="totalIncome">
+    <th mat-header-cell *matHeaderCellDef i18n>
+      {{ "Total_Income" | translate }}
+    </th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.daysOnBoard * element.dailyRate }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="certificates">
+    <th mat-header-cell *matHeaderCellDef i18n>
+      {{ "Certificates" | translate }}
+    </th>
+    <td mat-cell *matCellDef="let element">--</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef i18n>
+      {{ "Actions" | translate }}
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/crew', element.id]">
+          Detail
+        </button>
+        <button mat-menu-item>Edit</button>
+        <button mat-menu-item>Delete</button>
+      </mat-menu>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
