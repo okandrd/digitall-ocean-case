@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { CertificateType } from '../../../../models/certificateType.model';
-import { CertificateService } from '../../../../services/certificateType.service';
+import { CertificateTypeService } from '../../../../services/certificateType.service';
 
 @Component({
   selector: 'app-add-types',
@@ -36,7 +36,7 @@ export class AddTypesComponent {
 
   constructor(
     public dialogRef: MatDialogRef<AddTypesComponent>,
-    private certificateService: CertificateService
+    private certificateTypeService: CertificateTypeService
   ) {}
 
   onCancel(): void {
@@ -44,7 +44,7 @@ export class AddTypesComponent {
   }
 
   addType(): void {
-    this.certificateService.addCertificateType(this.newTypeData);
+    this.certificateTypeService.addCertificateType(this.newTypeData);
     this.dialogRef.close();
   }
 }

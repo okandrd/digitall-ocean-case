@@ -1,0 +1,9 @@
+.certificates {
+  margin-top: 12px;
+
+  &__buttons {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+}

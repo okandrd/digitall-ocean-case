@@ -1,7 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Crew } from '../models/crew.model';
 import { Injectable } from '@angular/core';
-import dummyData from './crewsDummy.json';
+import dummyData from '../datas/crewsDummy.json';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class CrewService {
 
   public crews$: Observable<Crew[]> = this.crewsSubject.asObservable();
 
-  private currentId = dummyData.length;
+  private currentId = dummyData.length + 1;
 
   constructor() {
     const storedCrews = localStorage.getItem('crews');

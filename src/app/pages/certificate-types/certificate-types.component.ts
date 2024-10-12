@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CertificateType } from '../../models/certificateType.model';
-import { CertificateService } from '../../services/certificateType.service';
+import { CertificateTypeService } from '../../services/certificateType.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { AddTypesComponent } from './components/add-crew/add-types.component';
+import { AddTypesComponent } from './components/add-types/add-types.component';
 
 @Component({
   selector: 'app-certificate-types',
@@ -26,10 +26,10 @@ import { AddTypesComponent } from './components/add-crew/add-types.component';
   styleUrl: './certificate-types.component.scss',
 })
 export class CertificateTypesComponent {
-  certificateTypes$!: Observable<CertificateType[]>;
+  certificateTypes$!: CertificateType[];
 
   constructor(
-    private certificateTypeService: CertificateService,
+    private certificateTypeService: CertificateTypeService,
     public dialog: MatDialog
   ) {}
 

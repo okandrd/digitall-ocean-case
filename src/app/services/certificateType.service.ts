@@ -1,12 +1,12 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import dummyData from './certificateTypesDummy.json';
+import dummyData from '../datas/certificateTypesDummy.json';
 import { CertificateType } from '../models/certificateType.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CertificateService {
+export class CertificateTypeService {
   private certificateTypesSubject: BehaviorSubject<CertificateType[]> =
     new BehaviorSubject<CertificateType[]>(dummyData);
 
@@ -29,8 +29,8 @@ export class CertificateService {
     }
   }
 
-  getCertificateTypes(): Observable<CertificateType[]> {
-    return this.certificateTypes$;
+  getCertificateTypes(): CertificateType[] {
+    return this.certificateTypesSubject.getValue();
   }
 
   getCertificateType(id: number): CertificateType | undefined {

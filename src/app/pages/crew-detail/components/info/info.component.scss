@@ -1,0 +1,34 @@
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 12px;
+
+  &__col {
+    width: 50%;
+    flex: 0 0 auto;
+    padding: 0px 6px;
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+
+      &:nth-child(n + 2) {
+        .info__item {
+          border-top: 1px solid black;
+        }
+      }
+    }
+
+    &:nth-child(n + 3) {
+      .info__item {
+        border-top: 1px solid black;
+      }
+    }
+  }
+
+  &__item {
+    padding: 6px 0px;
+    .title {
+      font-weight: 600;
+    }
+  }
+}

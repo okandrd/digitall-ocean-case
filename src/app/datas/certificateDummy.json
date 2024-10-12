@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "crewId": 1,
+    "type": {
+      "id": 1,
+      "name": "Certificate 1",
+      "description": "Certificate 1 description"
+    },
+    "issueDate": "2020-01-01",
+    "expiryDate": "2025-01-01"
+  },
+  {
+    "id": 2,
+    "crewId": 2,
+    "type": {
+      "id": 1,
+      "name": "Certificate 1",
+      "description": "Certificate 1 description"
+    },
+    "issueDate": "2021-01-11",
+    "expiryDate": "2025-01-01"
+  },
+  {
+    "id": 3,
+    "crewId": 3,
+    "type": {
+      "id": 1,
+      "name": "Certificate 1",
+      "description": "Certificate 1 description"
+    },
+    "issueDate": "2022-02-02",
+    "expiryDate": "2025-01-01"
+  },
+  {
+    "id": 4,
+    "crewId": 4,
+    "type": {
+      "id": 2,
+      "name": "Certificate 2",
+      "description": "Certificate 2 description"
+    },
+    "issueDate": "2020-05-23",
+    "expiryDate": "2025-01-01"
+  },
+  {
+    "id": 5,
+    "crewId": 5,
+    "type": {
+      "id": 2,
+      "name": "Certificate 2",
+      "description": "Certificate 2 description"
+    },
+    "issueDate": "2023-01-01",
+    "expiryDate": "2025-06-18"
+  }
+]

@@ -11,6 +11,8 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AddCrewComponent } from './components/add-crew/add-crew.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Certificate } from '../../models/certificate.model';
+import { ShowCertificatesComponent } from './components/show-certificates/show-certificates.component';
 
 @Component({
   selector: 'app-home',
@@ -35,6 +37,7 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.crews$ = this.crewService.getCrews();
+
     this.crews$.forEach((a) => {
       let result = a.reduce(function (r, a) {
         r[a.currency] = r[a.currency] || 0;
@@ -48,7 +51,7 @@ export class HomeComponent {
   openAddCrewDialog(): void {
     let dialogRef = this.dialog.open(AddCrewComponent, {
       minWidth: '60vw',
-      panelClass: 'add_crew_panel',
+      panelClass: 'add_panel',
     });
 
     dialogRef.afterClosed().subscribe(() => {
@@ -59,6 +62,14 @@ export class HomeComponent {
   deleteCrew(id: number): void {
     this.crewService.deleteCrew(id);
     this.crews$ = this.crewService.getCrews();
+  }
+
+  openCertificateDialog(crewId: number): void {
+    let dialogRef = this.dialog.open(ShowCertificatesComponent, {
+      minWidth: '60vw',
+      panelClass: 'add_panel',
+      data: crewId,
+    });
   }
 
   displayedColumns: string[] = [

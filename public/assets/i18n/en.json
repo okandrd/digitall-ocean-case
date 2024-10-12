@@ -19,5 +19,11 @@
   "Edit": "Edit",
   "Detail": "Detail",
   "Add_A_New_Certificate_Type": "Add a new certificate type",
-  "Add_Certificate_Type": "Add Certificate Type"
+  "Add_Certificate_Type": "Add Certificate Type",
+  "Close": "Close",
+  "Issue_Date": "Issue Date",
+  "Expiry_Date": "Expiry Date",
+  "Add_Certificate": "Add Certificate",
+  "Add_A_New_Certificate": "Add a new certificate",
+  "Type": "Type"
 }

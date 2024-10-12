@@ -1,1 +1,15 @@
-<p>crew member id {{ id }}</p>
+<div class="crew-detail">
+  <h3>{{ crew?.firstName }} {{ crew?.lastName }}</h3>
+  <mat-tab-group>
+    <mat-tab label="Detail">
+      <app-info [crew]="crew"></app-info>
+    </mat-tab>
+
+    <mat-tab label="Certificates">
+      <app-certificates
+        [certificates]="certificates"
+        [crewId]="crew?.id"
+      ></app-certificates>
+    </mat-tab>
+  </mat-tab-group>
+</div>
