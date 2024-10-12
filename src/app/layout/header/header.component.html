@@ -3,13 +3,30 @@
     <img src="/logos/digitall-ocean-logo.svg" />
   </a>
 
-  <select #langSelect (change)="translate.use(langSelect.value)">
-    <option
-      *ngFor="let lang of translate.getLangs()"
-      [value]="lang"
-      [selected]="lang === translate.currentLang"
-    >
-      {{ lang }}
-    </option>
-  </select>
+  <div class="header__menu">
+    <nav class="header__nav">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+        >Home</a
+      >
+      <a
+        routerLink="/certificate-types"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Certificate Types</a
+      >
+    </nav>
+    <select #langSelect (change)="translate.use(langSelect.value)">
+      <option
+        *ngFor="let lang of translate.getLangs()"
+        [value]="lang"
+        [selected]="lang === translate.currentLang"
+      >
+        {{ lang }}
+      </option>
+    </select>
+  </div>
 </header>

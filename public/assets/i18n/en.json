@@ -12,5 +12,12 @@
   "Add_Crew": "Add Crew",
   "Add_A_New_Crew": "Add a new crew",
   "Add": "Add",
-  "Cancel": "Cancel"
+  "Cancel": "Cancel",
+  "Name": "Name",
+  "Description": "Description",
+  "Delete": "Delete",
+  "Edit": "Edit",
+  "Detail": "Detail",
+  "Add_A_New_Certificate_Type": "Add a new certificate type",
+  "Add_Certificate_Type": "Add Certificate Type"
 }

@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>{{ "Add_A_New_Certificate_Type" | translate }}</h1>
+<div mat-dialog-content class="add_dialog">
+  <mat-form-field>
+    <mat-label>{{ "Name" | translate }}</mat-label>
+    <input matInput [(ngModel)]="newTypeData.name" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{ "Description" | translate }}</mat-label>
+    <textarea matInput [(ngModel)]="newTypeData.description"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">{{ "Cancel" | translate }}</button>
+  <button mat-button (click)="addType()">{{ "Add" | translate }}</button>
+</div>

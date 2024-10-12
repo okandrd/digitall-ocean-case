@@ -100,10 +100,12 @@
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item [routerLink]="['/crew', element.id]">
-            Detail
+            {{ "Detail" | translate }}
           </button>
-          <button mat-menu-item>Edit</button>
-          <button mat-menu-item (click)="deleteCrew(element.id)">Delete</button>
+          <button mat-menu-item>{{ "Edit" | translate }}</button>
+          <button mat-menu-item (click)="deleteCrew(element.id)">
+            {{ "Delete" | translate }}
+          </button>
         </mat-menu>
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
