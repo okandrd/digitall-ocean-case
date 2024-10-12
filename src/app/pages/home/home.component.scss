@@ -1,0 +1,35 @@
+.crews {
+  &__buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: end;
+  }
+
+  &__table {
+    width: 100%;
+    overflow: scroll;
+    border: 1px solid #d0d0d0;
+
+    .total-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .title {
+        border-bottom: 1px solid #d0d0d0;
+        width: 100%;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .currency {
+        padding: 4px 0px;
+        font-weight: 500;
+
+        & + .currency {
+          border-top: 1px solid #d0d0d0;
+        }
+      }
+    }
+  }
+}

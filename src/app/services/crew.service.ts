@@ -13,19 +13,26 @@ export class CrewService {
 
   public crews$: Observable<Crew[]> = this.crewsSubject.asObservable();
 
-  private currentId = 1;
+  private currentId = dummyData.length;
 
   constructor() {
     const storedCrews = localStorage.getItem('crews');
     if (storedCrews) {
       const crews: Crew[] = JSON.parse(storedCrews);
       this.crewsSubject.next(crews);
-      this.currentId = crews.length > 0 ? crews[crews.length - 1].id + 1 : 1;
+      this.currentId =
+        crews.length > 0 ? crews[crews.length - 1].id + 1 : dummyData.length;
     }
   }
 
   getCrews(): Observable<Crew[]> {
     return this.crews$;
+  }
+
+  getCrew(id: number): Crew | undefined {
+    const currentCrews = this.crewsSubject.getValue();
+    const findedCrew = currentCrews.find((crew) => crew.id === id);
+    return findedCrew;
   }
 
   addCrew(crew: Omit<Crew, 'id'>): void {

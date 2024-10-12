@@ -1,3 +1,14 @@
 {
-  "HELLO": "Olá"
+  "First_Name": "Primeiro Nome",
+  "Last_Name": "Sobrenome",
+  "Nationality": "Nacionalidade",
+  "Title": "Título",
+  "Days_On_Board": "Dias a Bordo",
+  "Daily_Rate": "Taxa Diária",
+  "Currency": "Moeda",
+  "Total_Income": "Renda Total",
+  "Certificates": "Certificados",
+  "Actions": "Ações",
+  "Add_Crew": "Adicionar Tripulação",
+  "Add_A_New_Crew": "Adicionar uma Nova Tripulação"
 }

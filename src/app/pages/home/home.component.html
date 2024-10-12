@@ -1,83 +1,116 @@
-<table mat-table [dataSource]="crews$" class="mat-elevation-z8">
-  <ng-container matColumnDef="firstName">
-    <th mat-header-cell *matHeaderCellDef i18n>
-      {{ "First_Name" | translate }}
-    </th>
-    <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
-  </ng-container>
+<div class="crews__buttons">
+  <button mat-flat-button extended (click)="openAddCrewDialog()">
+    <mat-icon>add</mat-icon>
+    {{ "Add_Crew" | translate }}
+  </button>
+</div>
 
-  <ng-container matColumnDef="lastName">
-    <th mat-header-cell *matHeaderCellDef i18n>
-      {{ "Last_Name" | translate }}
-    </th>
-    <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
-  </ng-container>
+<div class="crews__table mt-2">
+  <table mat-table [dataSource]="crews$" class="mat-elevation-z0 crews__table">
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef i18n>
+        {{ "First_Name" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
 
-  <ng-container matColumnDef="nationality">
-    <th mat-header-cell *matHeaderCellDef i18n>
-      {{ "Nationality" | translate }}
-    </th>
-    <td mat-cell *matCellDef="let element">{{ element.nationality }}</td>
-  </ng-container>
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef i18n>
+        {{ "Last_Name" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
 
-  <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef i18n>{{ "Title" | translate }}</th>
-    <td mat-cell *matCellDef="let element">{{ element.title }}</td>
-  </ng-container>
+    <ng-container matColumnDef="nationality">
+      <th mat-header-cell *matHeaderCellDef i18n>
+        {{ "Nationality" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.nationality }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
 
-  <ng-container matColumnDef="daysOnBoard">
-    <th mat-header-cell *matHeaderCellDef i18n>
-      {{ "Days_On_Board" | translate }}
-    </th>
-    <td mat-cell *matCellDef="let element">{{ element.daysOnBoard }}</td>
-  </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef i18n>{{ "Title" | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
 
-  <ng-container matColumnDef="dailyRate">
-    <th mat-header-cell *matHeaderCellDef i18n>
-      {{ "Daily_Rate" | translate }}
-    </th>
-    <td mat-cell *matCellDef="let element">{{ element.dailyRate }}</td>
-  </ng-container>
+    <ng-container matColumnDef="daysOnBoard">
+      <th mat-header-cell *matHeaderCellDef i18n>
+        {{ "Days_On_Board" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.daysOnBoard }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
 
-  <ng-container matColumnDef="currency">
-    <th mat-header-cell *matHeaderCellDef i18n>{{ "Currency" | translate }}</th>
-    <td mat-cell *matCellDef="let element">{{ element.currency }}</td>
-  </ng-container>
+    <ng-container matColumnDef="dailyRate">
+      <th mat-header-cell *matHeaderCellDef i18n>
+        {{ "Daily_Rate" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.dailyRate | currency : element.currency }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
 
-  <ng-container matColumnDef="totalIncome">
-    <th mat-header-cell *matHeaderCellDef i18n>
-      {{ "Total_Income" | translate }}
-    </th>
-    <td mat-cell *matCellDef="let element">
-      {{ element.daysOnBoard * element.dailyRate }}
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="currency">
+      <th mat-header-cell *matHeaderCellDef i18n>
+        {{ "Currency" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.currency }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
 
-  <ng-container matColumnDef="certificates">
-    <th mat-header-cell *matHeaderCellDef i18n>
-      {{ "Certificates" | translate }}
-    </th>
-    <td mat-cell *matCellDef="let element">--</td>
-  </ng-container>
+    <ng-container matColumnDef="totalIncome">
+      <th mat-header-cell *matHeaderCellDef i18n>
+        {{ "Total_Income" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{
+          element.daysOnBoard * element.dailyRate | currency : element.currency
+        }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <div class="total-col">
+          <span class="title">Total</span>
+          <span class="currency" *ngFor="let currency of total | keyvalue">
+            {{ currency.value | currency : currency.key }}
+          </span>
+        </div>
+      </td>
+    </ng-container>
 
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef i18n>
-      {{ "Actions" | translate }}
-    </th>
-    <td mat-cell *matCellDef="let element">
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="['/crew', element.id]">
-          Detail
+    <ng-container matColumnDef="certificates">
+      <th mat-header-cell *matHeaderCellDef i18n>
+        {{ "Certificates" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">--</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef i18n>
+        {{ "Actions" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
         </button>
-        <button mat-menu-item>Edit</button>
-        <button mat-menu-item>Delete</button>
-      </mat-menu>
-    </td>
-  </ng-container>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/crew', element.id]">
+            Detail
+          </button>
+          <button mat-menu-item>Edit</button>
+          <button mat-menu-item (click)="deleteCrew(element.id)">Delete</button>
+        </mat-menu>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+  </table>
+</div>

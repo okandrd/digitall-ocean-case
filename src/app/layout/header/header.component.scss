@@ -7,19 +7,9 @@
 
   &__logo {
     height: 36px;
-  }
 
-  &__nav {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    a {
-      color: #ffffff;
-
-      &.active {
-        color: #ff5000;
-      }
+    img {
+      height: 100%;
     }
   }
 }

@@ -8,5 +8,9 @@
   "Currency": "Currency",
   "Total_Income": "Total Income",
   "Certificates": "Certificates",
-  "Actions": "Actions"
+  "Actions": "Actions",
+  "Add_Crew": "Add Crew",
+  "Add_A_New_Crew": "Add a new crew",
+  "Add": "Add",
+  "Cancel": "Cancel"
 }

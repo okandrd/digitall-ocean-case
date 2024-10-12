@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>{{ "Add_A_New_Crew" | translate }}</h1>
+<div mat-dialog-content class="add_crew_dialog">
+  <mat-form-field>
+    <mat-label>{{ "First_Name" | translate }}</mat-label>
+    <input matInput [(ngModel)]="newCrewData.firstName" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{ "Last_Name" | translate }}</mat-label>
+    <input matInput [(ngModel)]="newCrewData.lastName" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{ "Nationality" | translate }}</mat-label>
+    <mat-select [(ngModel)]="newCrewData.nationality">
+      <mat-option value="Turk">Turk</mat-option>
+      <mat-option value="German">German</mat-option>
+      <mat-option value="Russian">Russian</mat-option>
+      <mat-option value="Greek">Greek</mat-option>
+      <mat-option value="American">American</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ "Title" | translate }}</mat-label>
+    <mat-select [(ngModel)]="newCrewData.title">
+      <mat-option value="Captain">Captain</mat-option>
+      <mat-option value="Engineer">Engineer</mat-option>
+      <mat-option value="Cooker">Cooker</mat-option>
+      <mat-option value="Mechanicer">Mechanicer</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ "Days_On_Board" | translate }}</mat-label>
+    <input
+      matInput
+      type="number"
+      min="0"
+      [(ngModel)]="newCrewData.daysOnBoard"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ "Daily_Rate" | translate }}</mat-label>
+    <input matInput type="number" min="0" [(ngModel)]="newCrewData.dailyRate" />
+  </mat-form-field>
+
+  <div style="display: flex; flex-direction: column">
+    <mat-label>{{ "Currency" | translate }}</mat-label>
+    <mat-radio-group
+      aria-label="Select an option"
+      [(ngModel)]="newCrewData.currency"
+    >
+      <mat-radio-button value="USD">USD</mat-radio-button>
+      <mat-radio-button value="EUR">EUR</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">{{ "Cancel" | translate }}</button>
+  <button mat-button (click)="addCrew()">{{ "Add" | translate }}</button>
+</div>

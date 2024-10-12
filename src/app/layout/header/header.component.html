@@ -1,29 +1,15 @@
 <header class="header">
-  <img class="header__logo" src="/logos/digitall-ocean-logo.svg" />
-  <nav class="header__nav">
-    <a
-      routerLink="/"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      ariaCurrentWhenActive="page"
-      i18n
-      >Home</a
+  <a [routerLink]="'/'" class="header__logo">
+    <img src="/logos/digitall-ocean-logo.svg" />
+  </a>
+
+  <select #langSelect (change)="translate.use(langSelect.value)">
+    <option
+      *ngFor="let lang of translate.getLangs()"
+      [value]="lang"
+      [selected]="lang === translate.currentLang"
     >
-    <a
-      routerLink="/crew/1"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page"
-      i18n
-      >Example Crew</a
-    >
-    <select #langSelect (change)="translate.use(langSelect.value)">
-      <option
-        *ngFor="let lang of translate.getLangs()"
-        [value]="lang"
-        [selected]="lang === translate.currentLang"
-      >
-        {{ lang }}
-      </option>
-    </select>
-  </nav>
+      {{ lang }}
+    </option>
+  </select>
 </header>
