@@ -1,0 +1,24 @@
+<div class="menu__content">
+  <a [routerLink]="'/'" class="logo">
+    <img src="/logos/digitall-ocean-logo.svg" />
+  </a>
+  <nav class="nav">
+    <a
+      class="nav__link"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      ariaCurrentWhenActive="page"
+    >
+      <mat-icon>home</mat-icon>Home
+    </a>
+    <a
+      class="nav__link"
+      routerLink="/certificate-types"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      <mat-icon>title</mat-icon>Certificate Types
+    </a>
+  </nav>
+</div>

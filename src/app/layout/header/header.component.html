@@ -1,32 +1,27 @@
 <header class="header">
-  <a [routerLink]="'/'" class="header__logo">
-    <img src="/logos/digitall-ocean-logo.svg" />
-  </a>
-
-  <div class="header__menu">
-    <nav class="header__nav">
-      <a
-        routerLink="/"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        ariaCurrentWhenActive="page"
-        >Home</a
-      >
-      <a
-        routerLink="/certificate-types"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        >Certificate Types</a
-      >
-    </nav>
-    <select #langSelect (change)="translate.use(langSelect.value)">
-      <option
-        *ngFor="let lang of translate.getLangs()"
-        [value]="lang"
-        [selected]="lang === translate.currentLang"
-      >
-        {{ lang }}
-      </option>
-    </select>
-  </div>
+  <mat-select
+    class="language-select"
+    formControlName="contact"
+    [(value)]="selectedLanguage"
+    (selectionChange)="onLanguageChange($event.value)"
+  >
+    <mat-select-trigger class="language-label">
+      <img
+        [src]="selectedLangOption?.img"
+        alt="{{ selectedLangOption?.label }}"
+        style="height: 20px; object-fit: contain; margin-right: 8px"
+      />
+      {{ selectedLangOption?.label }}
+    </mat-select-trigger>
+    <mat-option
+      class="language-option"
+      *ngFor="let lang of languageOptions"
+      [value]="lang.value"
+    >
+      <div class="d-flex align-items-center">
+        <img [src]="lang.img" />
+        <span class="ml-2">{{ lang.label }}</span>
+      </div>
+    </mat-option>
+  </mat-select>
 </header>

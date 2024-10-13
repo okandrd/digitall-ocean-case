@@ -1,5 +1,9 @@
 <div class="certificate-types__buttons">
-  <button mat-flat-button extended (click)="openAddCrewDialog()">
+  <button
+    mat-flat-button
+    extended
+    (click)="openAddOrUpdateCertificateTypeDialog()"
+  >
     <mat-icon>add</mat-icon>
     {{ "Add_Certificate_Type" | translate }}
   </button>
@@ -34,7 +38,12 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>{{ "Edit" | translate }}</button>
+          <button
+            mat-menu-item
+            (click)="openAddOrUpdateCertificateTypeDialog(element)"
+          >
+            {{ "Edit" | translate }}
+          </button>
           <button mat-menu-item (click)="deleteCertificateType(element.id)">
             {{ "Delete" | translate }}
           </button>

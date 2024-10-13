@@ -15,14 +15,14 @@ import {
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CrewService } from '../../../../services/crew.service';
+import { Crew } from '../../../../models/crew.model';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
-import { CertificateType } from '../../../../models/certificateType.model';
-import { CertificateTypeService } from '../../../../services/certificateType.service';
 
 @Component({
-  selector: 'app-add-types',
+  selector: 'app-add-or-update-crew',
   standalone: true,
   imports: [
     MatFormFieldModule,
@@ -36,29 +36,34 @@ import { CertificateTypeService } from '../../../../services/certificateType.ser
     MatRadioModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './add-types.component.html',
-  styleUrl: './add-types.component.scss',
+  templateUrl: './add-or-update-crew.component.html',
+  styleUrl: './add-or-update-crew.component.scss',
 })
-export class AddTypesComponent {
-  readonly updateData = inject<CertificateType>(MAT_DIALOG_DATA);
-  newTypeFrom!: FormGroup;
+export class AddCrewComponent {
+  readonly updateData = inject<Crew>(MAT_DIALOG_DATA);
+  newCrewForm!: FormGroup;
 
   constructor(
-    public dialogRef: MatDialogRef<AddTypesComponent>,
-    private certificateTypeService: CertificateTypeService,
+    public dialogRef: MatDialogRef<AddCrewComponent>,
+    private crewService: CrewService,
     private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
-    this.newTypeFrom = this.fb.group({
-      name: [
-        this.updateData?.name || '',
+    this.newCrewForm = this.fb.group({
+      firstName: [
+        this.updateData?.firstName || '',
         [Validators.required, Validators.minLength(1)],
       ],
-      description: [
-        this.updateData?.description || '',
+      lastName: [
+        this.updateData?.lastName || '',
         [Validators.required, Validators.minLength(1)],
       ],
+      nationality: [this.updateData?.nationality || null, Validators.required],
+      title: [this.updateData?.title || null, Validators.required],
+      daysOnBoard: [this.updateData?.daysOnBoard || 0, Validators.required],
+      dailyRate: [this.updateData?.dailyRate || 0, Validators.required],
+      currency: [this.updateData?.currency || null, Validators.required],
     });
   }
 
@@ -66,15 +71,15 @@ export class AddTypesComponent {
     this.dialogRef.close();
   }
 
-  addType(): void {
-    if (this.newTypeFrom.valid) {
+  addCrew(): void {
+    if (this.newCrewForm.valid) {
       if (this.updateData) {
-        this.certificateTypeService.updateCertificateType({
-          ...this.newTypeFrom.value,
+        this.crewService.updateCrew({
+          ...this.newCrewForm.value,
           id: this.updateData.id,
         });
       } else {
-        this.certificateTypeService.addCertificateType(this.newTypeFrom.value);
+        this.crewService.addCrew(this.newCrewForm.value);
       }
       this.dialogRef.close();
     }

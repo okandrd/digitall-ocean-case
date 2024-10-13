@@ -29,8 +29,8 @@ export class CertificateTypeService {
     }
   }
 
-  getCertificateTypes(): CertificateType[] {
-    return this.certificateTypesSubject.getValue();
+  getCertificateTypes(): Observable<CertificateType[]> {
+    return this.certificateTypes$;
   }
 
   getCertificateType(id: number): CertificateType | undefined {

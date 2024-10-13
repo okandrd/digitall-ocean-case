@@ -9,9 +9,8 @@ import { Crew } from '../../models/crew.model';
 import { CrewService } from '../../services/crew.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AddCrewComponent } from './components/add-crew/add-crew.component';
+import { AddCrewComponent } from './components/add-or-update-crew/add-or-update-crew.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Certificate } from '../../models/certificate.model';
 import { ShowCertificatesComponent } from './components/show-certificates/show-certificates.component';
 
 @Component({
@@ -52,6 +51,18 @@ export class HomeComponent {
     let dialogRef = this.dialog.open(AddCrewComponent, {
       minWidth: '60vw',
       panelClass: 'add_panel',
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.crews$ = this.crewService.getCrews();
+    });
+  }
+
+  openEditCrewDialog(crew: Crew): void {
+    let dialogRef = this.dialog.open(AddCrewComponent, {
+      minWidth: '60vw',
+      panelClass: 'add_panel',
+      data: crew,
     });
 
     dialogRef.afterClosed().subscribe(() => {

@@ -26,7 +26,7 @@ import { AddTypesComponent } from './components/add-types/add-types.component';
   styleUrl: './certificate-types.component.scss',
 })
 export class CertificateTypesComponent {
-  certificateTypes$!: CertificateType[];
+  certificateTypes$!: Observable<CertificateType[]>;
 
   constructor(
     private certificateTypeService: CertificateTypeService,
@@ -42,10 +42,11 @@ export class CertificateTypesComponent {
     this.certificateTypes$ = this.certificateTypeService.getCertificateTypes();
   }
 
-  openAddCrewDialog(): void {
+  openAddOrUpdateCertificateTypeDialog(updateData?: CertificateType): void {
     let dialogRef = this.dialog.open(AddTypesComponent, {
       minWidth: '60vw',
       panelClass: 'add_crew_panel',
+      data: updateData,
     });
 
     dialogRef.afterClosed().subscribe(() => {
@@ -53,6 +54,33 @@ export class CertificateTypesComponent {
         this.certificateTypeService.getCertificateTypes();
     });
   }
+
+  // openAddCertificateTypeDialog(): void {
+  //   let dialogRef = this.dialog.open(AddTypesComponent, {
+  //     minWidth: '60vw',
+  //     panelClass: 'add_crew_panel',
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(() => {
+  //     this.certificateTypes$ =
+  //       this.certificateTypeService.getCertificateTypes();
+  //   });
+  // }
+
+  // openEditCertificateTypeDialog(certificateType: CertificateType): void {
+  //   let dialogRef = this.dialog.open(AddTypesComponent, {
+  //     minWidth: '60vw',
+  //     panelClass: 'add_crew_panel',
+  //     data: certificateType,
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(() => {
+  //     console.log('test');
+
+  //     this.certificateTypes$ =
+  //       this.certificateTypeService.getCertificateTypes();
+  //   });
+  // }
 
   displayedColumns: string[] = ['name', 'description', 'actions'];
 }

@@ -7,8 +7,7 @@
     "title": "Engineer",
     "daysOnBoard": 10,
     "dailyRate": 100,
-    "currency": "USD",
-    "certificates": []
+    "currency": "USD"
   },
   {
     "id": 2,
@@ -18,8 +17,7 @@
     "title": "Engineer",
     "daysOnBoard": 5,
     "dailyRate": 75,
-    "currency": "USD",
-    "certificates": []
+    "currency": "USD"
   },
   {
     "id": 3,
@@ -29,8 +27,7 @@
     "title": "Engineer",
     "daysOnBoard": 12,
     "dailyRate": 100,
-    "currency": "USD",
-    "certificates": []
+    "currency": "USD"
   },
   {
     "id": 4,
@@ -40,8 +37,7 @@
     "title": "Engineer",
     "daysOnBoard": 9,
     "dailyRate": 120,
-    "currency": "USD",
-    "certificates": []
+    "currency": "USD"
   },
   {
     "id": 5,
@@ -51,7 +47,6 @@
     "title": "Engineer",
     "daysOnBoard": 14,
     "dailyRate": 150,
-    "currency": "USD",
-    "certificates": []
+    "currency": "USD"
   }
 ]

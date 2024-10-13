@@ -1,44 +1,47 @@
 <h1 mat-dialog-title>{{ "Add_A_New_Certificate" | translate }}</h1>
 <div mat-dialog-content class="add_dialog">
-  <mat-form-field>
-    <mat-label>{{ "Type" | translate }}</mat-label>
-    <mat-select [(ngModel)]="newCertificate.type" name="type" #name="ngModel">
-      @for (certificateType of certificateTypes; track certificateType) {
-      <mat-option [value]="certificateType">{{
-        certificateType.name
-      }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+  <form [formGroup]="certificateForm">
+    <mat-form-field>
+      <mat-label>{{ "Type" | translate }}</mat-label>
+      <mat-select name="type" formControlName="type">
+        @for (certificateType of certificateTypes; track certificateType) {
+        <mat-option [value]="certificateType">{{
+          certificateType.name
+        }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>{{ "Issue_Date" | translate }}</mat-label>
-    <input
-      matInput
-      [matDatepicker]="picker1"
-      [(ngModel)]="newCertificate.issueDate"
-    />
-    <mat-datepicker-toggle matIconSuffix [for]="picker1">
-    </mat-datepicker-toggle>
-    <mat-datepicker #picker1></mat-datepicker>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ "Issue_Date" | translate }}</mat-label>
+      <input matInput [matDatepicker]="picker1" formControlName="issueDate" />
+      <mat-datepicker-toggle matIconSuffix [for]="picker1">
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>{{ "Expiry_Date" | translate }}</mat-label>
-    <input
-      matInput
-      [matDatepicker]="picker2"
-      [(ngModel)]="newCertificate.expiryDate"
-      [min]="newCertificate.issueDate"
-    />
-    <mat-datepicker-toggle matIconSuffix [for]="picker2">
-    </mat-datepicker-toggle>
-    <mat-datepicker #picker2></mat-datepicker>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ "Expiry_Date" | translate }}</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker2"
+        [min]="certificateForm.get('issueDate')?.value"
+        formControlName="expiryDate"
+        required
+      />
+      <mat-datepicker-toggle matIconSuffix [for]="picker2">
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+  </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">{{ "Cancel" | translate }}</button>
-  <button mat-button type="submit" (click)="addCertificate()">
+  <button
+    mat-button
+    (click)="addCertificate()"
+    [disabled]="!certificateForm.valid"
+  >
     {{ "Add" | translate }}
   </button>
 </div>

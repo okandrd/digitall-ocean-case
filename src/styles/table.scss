@@ -1,0 +1,35 @@
+.mt-table {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: var(
+    --mat-table-row-item-outline-color,
+    var(--mat-app-outline, rgba(0, 0, 0, 0.12))
+  ) !important;
+
+  td,
+  th {
+    border-right: 1px solid
+      var(
+        --mat-table-row-item-outline-color,
+        var(--mat-app-outline, rgba(0, 0, 0, 0.12))
+      );
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  tbody {
+    tr {
+      &:last-child {
+        td {
+          border-bottom: 1px solid
+            var(
+              --mat-table-row-item-outline-color,
+              var(--mat-app-outline, rgba(0, 0, 0, 0.12))
+            );
+        }
+      }
+    }
+  }
+}

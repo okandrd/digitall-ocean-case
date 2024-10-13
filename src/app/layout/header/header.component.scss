@@ -2,33 +2,36 @@
   height: 60px;
   padding: 12px;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
 
-  &__logo {
-    height: 36px;
+  .language-select {
+    width: fit-content;
+    border: none;
+    padding: 4px;
+    height: 100%;
 
-    img {
+    .language-label {
       height: 100%;
-    }
-  }
+      display: flex;
+      align-items: center;
+      margin-right: 4px;
 
-  &__menu {
-    display: flex;
-    gap: 12px;
-  }
-
-  &__nav {
-    display: flex;
-    gap: 12px;
-
-    a {
-      color: #ffffff;
-      text-decoration: none;
-
-      &.active {
-        color: #ff5000;
+      img {
+        height: 100%;
       }
     }
+  }
+}
+.language-option {
+  font-size: 12px;
+
+  img {
+    width: 24px;
+    object-fit: contain;
+  }
+
+  .mat-pseudo-checkbox {
+    display: none;
   }
 }
