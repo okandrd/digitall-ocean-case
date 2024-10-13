@@ -22,7 +22,7 @@ import { CertificateType } from '../../../../models/certificateType.model';
 import { CertificateTypeService } from '../../../../services/certificateType.service';
 
 @Component({
-  selector: 'app-add-types',
+  selector: 'app-add-or-update-types',
   standalone: true,
   imports: [
     MatFormFieldModule,
@@ -36,8 +36,8 @@ import { CertificateTypeService } from '../../../../services/certificateType.ser
     MatRadioModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './add-types.component.html',
-  styleUrl: './add-types.component.scss',
+  templateUrl: './add-or-update-types.component.html',
+  styleUrl: './add-or-update-types.component.scss',
 })
 export class AddTypesComponent {
   readonly updateData = inject<CertificateType>(MAT_DIALOG_DATA);

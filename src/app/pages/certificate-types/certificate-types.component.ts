@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { AddTypesComponent } from './components/add-types/add-types.component';
+import { AddTypesComponent } from './components/add-or-update-types/add-or-update-types.component';
 
 @Component({
   selector: 'app-certificate-types',
