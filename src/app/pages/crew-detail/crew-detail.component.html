@@ -1,5 +1,11 @@
 <div class="crew-detail">
-  <span class="title">{{ crew?.firstName }} {{ crew?.lastName }}</span>
+  <div class="d-flex align-items-center">
+    <div class="goBack" (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </div>
+    <span class="title">{{ crew?.firstName }} {{ crew?.lastName }}</span>
+  </div>
+
   <mat-tab-group>
     <mat-tab label="Detail">
       <app-info [crew]="crew"></app-info>
