@@ -19,6 +19,12 @@ export class AppComponent {
     this.translate.use(browserLang?.match(/en|fr|pt/) ? browserLang : 'en');
   }
 
+  ngOnInit(): void {
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      document.body.classList.add('menu-closed');
+    }
+  }
+
   switchLanguage(lang: string) {
     this.translate.use(lang);
   }

@@ -34,6 +34,12 @@ export class HeaderComponent {
   );
   menuIcon = 'menu_open';
 
+  ngOnInit(): void {
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      this.menuIcon = 'menu';
+    }
+  }
+
   onLanguageChange(newLang: string) {
     this.selectedLanguage = newLang;
     this.selectedLangOption = this.languageOptions.find(
