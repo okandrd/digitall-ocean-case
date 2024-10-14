@@ -1,4 +1,9 @@
-<h1 mat-dialog-title>{{ "Add_A_New_Certificate_Type" | translate }}</h1>
+<h1 mat-dialog-title>
+  {{
+    (updateData ? "Edit_Certificate_Type" : "Add_A_New_Certificate_Type")
+      | translate
+  }}
+</h1>
 <div mat-dialog-content class="add_dialog">
   <form [formGroup]="newTypeFrom">
     <mat-form-field>
