@@ -1,4 +1,7 @@
 <header class="header">
+  <div class="menu-collapse" (click)="menuToggle()">
+    <mat-icon>{{ menuIcon }}</mat-icon>
+  </div>
   <mat-select
     class="language-select"
     formControlName="contact"

@@ -1,30 +1,31 @@
 .main {
   height: 100%;
   max-width: 100vw;
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: auto 1fr;
-  display: grid;
-  grid-template-areas:
-    "menu header"
-    "menu content"
-    "menu footer";
-}
-.menu {
-  grid-area: menu;
-  width: 200px;
-}
-.header {
-  grid-area: header;
-  background-color: #ffffff;
-}
-.footer {
-  grid-area: footer;
-  height: fit-content;
-  padding: 12px;
-}
 
-.content {
-  grid-area: content;
-  background-color: #f1f2f5;
-  padding: 12px;
+  .side {
+    width: 200px;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.3s ease;
+  }
+
+  .main-content {
+    padding-left: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+
+    .header {
+      background-color: #ffffff;
+    }
+
+    .content {
+      background-color: #f1f2f5;
+      padding: 12px;
+      flex: 1;
+    }
+  }
 }

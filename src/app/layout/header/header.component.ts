@@ -4,6 +4,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Language } from '../../models/language.type';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ import { Language } from '../../models/language.type';
     TranslateModule,
     CommonModule,
     MatSelectModule,
+    MatIconModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -30,18 +32,19 @@ export class HeaderComponent {
   selectedLangOption = this.languageOptions.find(
     (option) => option.value === this.selectedLanguage
   );
-
-  // ngOnInit(): void {
-  //   this.selectedLangOption = this.languageOptions.find(
-  //     (option) => option.value === this.translate.currentLang
-  //   );
-  // }
+  menuIcon = 'menu_open';
 
   onLanguageChange(newLang: string) {
     this.selectedLanguage = newLang;
     this.selectedLangOption = this.languageOptions.find(
       (option) => option.value === newLang
     );
+
     this.translate.use(newLang);
+  }
+
+  menuToggle(): void {
+    document.body.classList.toggle('menu-closed');
+    this.menuIcon = this.menuIcon === 'menu_open' ? 'menu' : 'menu_open';
   }
 }

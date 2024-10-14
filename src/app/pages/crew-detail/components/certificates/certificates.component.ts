@@ -56,5 +56,11 @@ export class CertificatesComponent {
       );
   }
 
-  displayedColumns: string[] = ['name', 'issueDate', 'expiryDate', 'actions'];
+  displayedColumns: string[] = [
+    'name',
+    'description',
+    'issueDate',
+    'expiryDate',
+    'actions',
+  ];
 }

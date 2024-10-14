@@ -25,5 +25,6 @@
   "Expiry_Date": "Expiry Date",
   "Add_Certificate": "Add Certificate",
   "Add_A_New_Certificate": "Add a new certificate",
-  "Type": "Type"
+  "Type": "Type",
+  "Total": "Total"
 }

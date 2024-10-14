@@ -15,8 +15,8 @@ import { AddTypesComponent } from './components/add-or-update-types/add-or-updat
   selector: 'app-certificate-types',
   standalone: true,
   imports: [
-    MatTableModule,
     TranslateModule,
+    MatTableModule,
     MatButtonModule,
     MatMenuModule,
     MatIconModule,

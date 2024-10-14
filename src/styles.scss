@@ -11,6 +11,27 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #000021;
+
+  &.menu-closed {
+    .side {
+      width: 50px !important;
+    }
+
+    .main-content {
+      padding-left: 50px !important;
+    }
+
+    .large-logo {
+      display: none !important;
+    }
+    .mini-logo {
+      display: block !important;
+    }
+
+    .nav__title {
+      display: none;
+    }
+  }
 }
 
 .full-height {
@@ -40,6 +61,10 @@ body {
   }
 }
 
-.add_crew_panel {
+.add_panel {
   width: 90vw;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: unset !important;
 }

@@ -75,7 +75,7 @@
       </td>
       <td mat-footer-cell *matFooterCellDef>
         <div class="total-col">
-          <span class="title">Total</span>
+          <span class="title">{{ "Total" | translate }}</span>
           <span class="currency" *ngFor="let currency of total | keyvalue">
             {{ currency.value | currency : currency.key }}
           </span>
